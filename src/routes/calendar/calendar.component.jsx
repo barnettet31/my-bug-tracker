@@ -1,3 +1,3 @@
 export const Calendar = () => {
-  return <h1>Hello Calendar Test CI/CD</h1>;
+  return <h1>Hello Calendar</h1>;
 };
