@@ -4,7 +4,7 @@ export const signIn = async ({ email, password }) => {
     const user = await Auth.signIn(email, password);
     return user;
   } catch (e) {
-    throw new Error(e.message);
+    throw new Error("Invalid Login");
   }
 };
 export const handleNewPasswordChallenge = async (userObject, newPassword) => {
@@ -15,7 +15,7 @@ export const handleNewPasswordChallenge = async (userObject, newPassword) => {
       {}
     );
   } catch (e) {
-    throw new Error(e.message);
+    throw new Error("An Error Occured");
   }
 };
 export const signOut = async (user) => {
