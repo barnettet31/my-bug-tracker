@@ -13,7 +13,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(false);
   const [tempUserToken, setTempUserToken] = useState();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMessage, setError] = useState("");
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -70,17 +69,8 @@ export const AuthProvider = ({ children }) => {
     confirmIsLoggedIn();
   }, []);
 
-  useEffect(() => {
-    const verifyUser = () => {
-      if (userToken) {
-        console.log(userToken);
-      }
-    };
-  }, [userToken]);
-
   const value = {
     userToken,
-
     handleSignOut,
     handleLogin,
     loading,
