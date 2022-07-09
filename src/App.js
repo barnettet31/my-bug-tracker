@@ -10,6 +10,9 @@ import { Login } from "./routes/login/login.component";
 import { ProtectedRoute } from "./components/protected-route/protected-route.component";
 import { AuthProvider } from "./services/authentication/authentication.context";
 import { NewPassword } from "./routes/new-password/new-password.component";
+import { Amplify } from "aws-amplify";
+import awsmobile from "./aws-exports";
+Amplify.configure(awsmobile);
 function App() {
   return (
     <AuthProvider>

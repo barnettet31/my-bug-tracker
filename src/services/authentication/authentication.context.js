@@ -4,11 +4,10 @@ import {
   signIn,
   signOut,
 } from "./authentication.services";
-import { Amplify, Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import { ErrorModal } from "../../components/error-modal/error-modal.component";
 import { useNavigate } from "react-router-dom";
-import awsmobile from "../../aws-exports";
-Amplify.configure(awsmobile);
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
