@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
   const handleLogin = async (userObject) => {
+    setLoading(true);
     try {
       const user = await signIn(userObject);
 
@@ -28,6 +29,7 @@ export const AuthProvider = ({ children }) => {
         });
       }
       setUserToken(user);
+      setLoading(false);
       navigate("/", {
         replace: true,
       });
@@ -88,21 +90,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const confirmIsLoggedIn = () => {
+    setLoading(true);
     Auth.currentAuthenticatedUser()
       .then((sess) => {
         if (sess.isValid()) {
           setUserToken((prevState) => {
+            setLoading(false);
             navigate("/", {
               replace: true,
             });
             return sess;
           });
         } else {
-          console.log(sess);
         }
       })
       .catch((e) => {
         setUserToken(null);
+        setLoading(false);
       });
   };
   useEffect(() => {

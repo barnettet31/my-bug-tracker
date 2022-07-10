@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import logo from "../../images/logo.png";
+import { LoadingIndicator } from "../loading-indicators/loading-indicator.component";
 import UserModal from "./user-modal.component";
-export default function SignInForm({ signIn, handleForgotPassword }) {
+export default function SignInForm({ signIn, handleForgotPassword, loading }) {
   const [modalShown, setModalShown] = useState(false);
   const { register, handleSubmit } = useForm();
   const location = useLocation();
@@ -19,6 +20,12 @@ export default function SignInForm({ signIn, handleForgotPassword }) {
     setModalShown(!modalShown);
     handleForgotPassword(data);
   };
+  if (loading)
+    return (
+      <div className="min-h-full min-w-full flex flex-col justify-center items-center">
+        <LoadingIndicator size="xLarge" />
+      </div>
+    );
 
   return (
     <>
