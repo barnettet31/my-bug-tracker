@@ -12,6 +12,7 @@ import { AuthProvider } from "./services/authentication/authentication.context";
 import { NewPassword } from "./routes/new-password/new-password.component";
 import { Amplify } from "aws-amplify";
 import awsmobile from "./aws-exports";
+import { ForgotPassword } from "./routes/forgot-password/forgot-password.component";
 Amplify.configure(awsmobile);
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/newpassword" element={<NewPassword />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route
           path="/"
           element={

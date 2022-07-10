@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const userNavigation = [
   { name: "Your Profile", path: "#" },
   { name: "Settings", path: "#" },
-  { name: "Sign out", path: "#" },
 ];
 
 export const UserProfileButton = () => {

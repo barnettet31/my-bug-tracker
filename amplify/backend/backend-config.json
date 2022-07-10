@@ -12,7 +12,7 @@
         ],
         "signupAttributes": [],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 12,
+          "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": [
             "REQUIRES_LOWERCASE",
             "REQUIRES_NUMBERS",
@@ -20,9 +20,9 @@
             "REQUIRES_UPPERCASE"
           ]
         },
-        "mfaConfiguration": "ON",
+        "mfaConfiguration": "OFF",
         "mfaTypes": [
-          "TOTP"
+          "SMS"
         ],
         "verificationMechanisms": [
           "EMAIL"

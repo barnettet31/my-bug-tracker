@@ -20,12 +20,14 @@ export const AuthProvider = ({ children }) => {
   const handleLogin = async (userObject) => {
     try {
       const user = await signIn(userObject);
+
       if (user.challengeName === "NEW_PASSWORD_REQUIRED") {
         setTempUserToken(user);
         return navigate("/newpassword", {
           replace: true,
         });
       }
+      setUserToken(user);
       navigate("/", {
         replace: true,
       });
@@ -37,6 +39,32 @@ export const AuthProvider = ({ children }) => {
   const handleSignOut = async (user) => {
     signOut(user);
   };
+  const handleForgotPassword = async (data) => {
+    try {
+      const response = await Auth.forgotPassword(data);
+      navigate("/forgotpassword");
+    } catch (e) {
+      setError("Invalid Username");
+      setIsError(true);
+    }
+  };
+  const handleUpdateForgotPassword = async ({
+    username,
+    token,
+    newPassword,
+  }) => {
+    try {
+      const response = await Auth.forgotPasswordSubmit(
+        username,
+        token,
+        newPassword
+      );
+      if (response === "SUCCESS")
+        navigate("/", { replace: true, state: { newPassword: true } });
+    } catch (e) {
+      setError("An error has occured");
+    }
+  };
   const handleClearError = () => {
     setError("");
     setIsError(false);
@@ -47,9 +75,10 @@ export const AuthProvider = ({ children }) => {
         userObject,
         newPassword
       );
-      setUserToken(response);
-      navigate("/", {
-        replace: true,
+      console.log(response);
+
+      navigate("/login", {
+        state: { newSignIn: true },
       });
     } catch (e) {
       setError(e.message);
@@ -59,7 +88,16 @@ export const AuthProvider = ({ children }) => {
   const confirmIsLoggedIn = () => {
     Auth.currentAuthenticatedUser()
       .then((sess) => {
-        setUserToken(sess);
+        if (sess.isValid()) {
+          setUserToken((prevState) => {
+            navigate("/", {
+              replace: true,
+            });
+            return sess;
+          });
+        } else {
+          console.log(sess);
+        }
       })
       .catch((e) => {
         setUserToken(null);
@@ -76,6 +114,8 @@ export const AuthProvider = ({ children }) => {
     loading,
     answerPasswordChallenge,
     tempUserToken,
+    handleForgotPassword,
+    handleUpdateForgotPassword,
   };
   return (
     <>

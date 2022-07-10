@@ -3,21 +3,21 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mybugtf1d3ef98",
+    "resourceNameTruncated": "mybugt947f8c5f",
     "userPoolName": "mybugtracker",
     "autoVerifiedAttributes": [
       "email"
     ],
-    "mfaConfiguration": "ON",
+    "mfaConfiguration": "OFF",
     "mfaTypes": [
-      "TOTP"
+      "SMS Text Message"
     ],
-    "smsAuthenticationMessage": "Your login code is {####}",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Verification code: {####}",
     "emailVerificationMessage": "Verification code: {####}",
     "defaultPasswordPolicy": false,
-    "passwordPolicyMinLength": 12,
+    "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [
       "Requires Lowercase",
       "Requires Numbers",
@@ -30,9 +30,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "mybugtf1d3ef98_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "mybugt947f8c5f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "f1d3ef98",
+    "sharedId": "947f8c5f",
     "resourceName": "mybugtracker",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
