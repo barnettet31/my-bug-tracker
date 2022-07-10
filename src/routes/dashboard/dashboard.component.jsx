@@ -9,13 +9,5 @@ export const Dashboard = () => {
       replace: true,
     });
   };
-  return (
-    <button
-      onClick={handleLogout}
-      type="button"
-      className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700"
-    >
-      Log Out
-    </button>
-  );
+  return <h1>Hello Dashboard</h1>;
 };

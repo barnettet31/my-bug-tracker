@@ -38,6 +38,8 @@ export const AuthProvider = ({ children }) => {
   };
   const handleSignOut = async (user) => {
     signOut(user);
+    setUserToken(false);
+    navigate("/", { replace: true });
   };
   const handleForgotPassword = async (data) => {
     try {

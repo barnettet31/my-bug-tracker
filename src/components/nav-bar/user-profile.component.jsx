@@ -2,12 +2,15 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { classNames } from "../../utilities/utility.functions";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../services/authentication/authentication.context";
 const userNavigation = [
   { name: "Your Profile", path: "#" },
   { name: "Settings", path: "#" },
 ];
 
 export const UserProfileButton = () => {
+  const { handleSignOut } = useAuth();
+  const handleSignOutClick = () => handleSignOut();
   return (
     <Menu as="div" className="ml-3 relative">
       <div>
@@ -45,6 +48,21 @@ export const UserProfileButton = () => {
               )}
             </Menu.Item>
           ))}
+          <Menu.Item>
+            {({ active }) => {
+              return (
+                <p
+                  onClick={handleSignOutClick}
+                  className={classNames(
+                    active ? "bg-gray-100" : "",
+                    "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                  )}
+                >
+                  Sign Out
+                </p>
+              );
+            }}
+          </Menu.Item>
         </Menu.Items>
       </Transition>
     </Menu>
