@@ -20,12 +20,6 @@ export default function SignInForm({ signIn, handleForgotPassword, loading }) {
     setModalShown(!modalShown);
     handleForgotPassword(data);
   };
-  if (loading)
-    return (
-      <div className="min-h-full min-w-full flex flex-col justify-center items-center">
-        <LoadingIndicator size="xLarge" />
-      </div>
-    );
 
   return (
     <>
@@ -99,13 +93,17 @@ export default function SignInForm({ signIn, handleForgotPassword, loading }) {
                   </p>
                 </div>
               </div>
-              <div>
-                <button
-                  type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                >
-                  Sign in
-                </button>
+              <div className="flex justify-center">
+                {loading ? (
+                  <LoadingIndicator size="small" />
+                ) : (
+                  <button
+                    type="submit"
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  >
+                    Sign in
+                  </button>
+                )}
               </div>
             </form>
           </div>
